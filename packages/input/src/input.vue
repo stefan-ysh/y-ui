@@ -1,7 +1,7 @@
 <template>
   <div>
     <input
-      :type="type"
+      :type="inputType"
       :title="title"
       :placeholder="placeholder"
       :value="value"
@@ -28,9 +28,11 @@
       :disabled="disabled"
       :step="step"
     />
-    <span v-if="showPassword" @mousedown="showPassword" @mouseup="hidePassword">
+    <span v-if="showPassword" @mousedown="showPwd" @mouseup="hidePwd">
       <i
-        :class="type === 'text' ? 'y-icon-search' : 'y-icon-ice-cream-round'"
+        :class="
+          inputType === 'text' ? 'y-icon-search' : 'y-icon-ice-cream-round'
+        "
       ></i>
     </span>
   </div>
@@ -42,7 +44,7 @@ export default {
   props: {
     type: {
       type: String,
-      default: "email"
+      default: "text"
     },
     name: {
       type: String,
@@ -93,16 +95,25 @@ export default {
       default: ""
     }
   },
+  data() {
+    return {
+      inputType: "text"
+    };
+  },
   methods: {
-    showPassword() {
-      let tempVal = this.value;
-      this.type = "text";
-      this.value = tempVal;
+    showPwd() {
+      this.inputType = "text";
     },
-    hidePassword() {
-      let tempVal = this.value;
-      this.type = "password";
-      this.value = tempVal;
+    hidePwd() {
+      this.inputType = "password";
+    }
+  },
+  watch: {
+    type: {
+      handler: function(o, n) {
+        this.inputType = o;
+      },
+      immediate: true
     }
   }
 };
