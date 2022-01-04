@@ -2,7 +2,7 @@
   <div class="app">
     <div class="row">
       <h4>Original</h4>
-      <y-input type="password" :value="value"></y-input>
+      <y-input :value="value" :show-password="showPassword"></y-input>
     </div>
     <div class="row">
       <h4>Plain</h4>
@@ -24,7 +24,8 @@
 export default {
   data() {
     return {
-      value: "QazWsx1472582017"
+      value: "QazWsx1472582017",
+      showPassword: false
     };
   }
 };
