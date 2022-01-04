@@ -68,7 +68,7 @@ export default {
     },
     showPassword: {
       type: Boolean,
-      default: true
+      default: false
     },
     readonly: {
       type: Boolean,
@@ -111,6 +111,7 @@ export default {
   watch: {
     type: {
       handler: function(o, n) {
+        debugger
         this.inputType = o;
       },
       immediate: true
