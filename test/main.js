@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 // 导入组件库
-import YUi from '../packages'
+import YUi from '../src/component'
 
 Vue.config.productionTip = false
 
